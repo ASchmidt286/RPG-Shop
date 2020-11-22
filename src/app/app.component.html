@@ -1,0 +1,19 @@
+<p>{{title}}</p>
+
+<table style="margin-left: 100px;">
+  <tr *ngFor="let value of items; index as i">
+    <td>{{value}}</td>
+    <td (click)="deleteValueFromList(i);">x</td>
+  </tr>
+</table>
+<div>
+  <input [(ngModel)]="newValue" (keypress)="inputKeyPress($event)" />
+  <input type="submit" (click)="addValueToList();" />
+</div>
+<div>
+  <input [(ngModel)]="searchValue" (keypress)="searchKeyPress($event)" />
+  <input type="submit" (click)="addValueToList();" />
+</div>
+<div *ngIf="searchResult != ''">
+  {{searchResult}}
+</div>
