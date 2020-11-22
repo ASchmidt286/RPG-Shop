@@ -1,0 +1,21 @@
+<app-header></app-header>
+<div>{{summe}}</div>
+<div>
+    <table>
+        <tr *ngFor="let item of gegenstandsliste">
+            <td>
+                {{item}}
+            </td>
+            <td (click)="deleteItem(item)">
+                X
+            </td>
+        </tr>
+    </table>
+</div>
+<div><label for="eingabe">Gegenstand eingeben</label>
+    <input id="eingabe" placeholder="It's dangerous to go alone..." style="width: 230px;" [(ngModel)]="newitem"
+        (keypress)="eingabeBestaetigen($event)"><input type="submit" (click)="additem()"></div>
+<div><label for="suche">Gegenstand eingeben</label>
+    <input id="suche" placeholder="whatcha looking for?" style="width: 230px;" [(ngModel)]="searchItem"
+        (keypress)="sucheBestaetigen($event)"><input type="submit" (click)="lookForItem()"></div>
+<div *ngIf="result!=''">{{result}}</div>
