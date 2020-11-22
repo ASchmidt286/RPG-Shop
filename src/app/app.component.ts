@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     if (localStorage.getItem("items") !== null) {
       this.items = JSON.parse(localStorage.getItem("items"));
+      // alles neu huiuiui
     }
   }
 
