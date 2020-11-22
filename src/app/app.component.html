@@ -1,10 +1,11 @@
 <div>Hallo Welt!</div>
 
-<p>{{title}}</p>
+<p>{{foo}}</p>
 
 <table style="margin-left: 100px;">
   <tr *ngFor="let value of items; index as i">
     <td>{{value}}</td>
+    <td>{{price}}</td>
     <td (click)="deleteValueFromList(i);">X</td>
   </tr>
 </table>

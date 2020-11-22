@@ -7,16 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title: string = 'toller Text';
-  items: string[] = [];
+  items: ShopItem[] = [];
   newValue: string = '';
   searchValue: string = '';
   searchResult: string = '';
+  foo: ShopItem;
 
   ngOnInit(): void {
     if (localStorage.getItem("items") !== null) {
       this.items = JSON.parse(localStorage.getItem("items"));
-      // alles neu huiuiui
+
     }
+    this.foo = new ShopItem();
+    this.foo.Name = "Axt";
+    this.foo.Price = 5;
+    this.foo.addDescription("bsdjksdfjk");
   }
 
   inputKeyPress(event: KeyboardEvent): void {
@@ -61,13 +66,39 @@ export class AppComponent implements OnInit {
     return isInList;
   }
 
-  persistList(): void {
+  private persistList(): void {
     localStorage.setItem("items", JSON.stringify(this.items));
   }
 }
 
 class ShopItem {
   Name: string;
-  Value: number;
+  Price: number;
+  private Description: string;
 
+  addDescription(bla: string): void {
+    this.Description = bla;
+  }
+   // add(amount: number): void {
+  //   this.Price += amount;
+  // }
+
+  // remove(amount: number): void {
+  //   this.Price -= amount;
+  //   if (this.Price < 0){
+  //     this.Price = 0;
+  //   }
+  // }
+}
+
+class ShopInventory {
+  Items: ShopItem[];
+}
+
+class Warenkorb {
+  Items: ShopItem[];
+
+  add(item: ShopItem): void{
+    this.Items.push(item);
+  }
 }
